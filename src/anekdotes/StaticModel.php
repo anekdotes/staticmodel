@@ -11,6 +11,7 @@ use T;
  */
 class StaticModel implements ArrayAccess
 {
+
   /**
    * Contains the static base data of the model, as defined in the model's file.
    *
@@ -67,20 +68,21 @@ class StaticModel implements ArrayAccess
           $temp = null;
           foreach ($columns as $index => $column) {
               if ($index == 0){
-                  if (isset($value[$column])){
+                  if (isset($value[$column])) {
                       $temp = $value[$column];
                   }
               }
               else{
-                  if (isset($temp[$column])){
+                  if (isset($temp[$column])) {
                       $temp = $temp[$column];
                   }
               }
           }
-          if ($temp == $search){
+          if ($temp == $search) {
               $results[] = new static($value);
           }
       }
+
       return $results;
   }
 

@@ -25,17 +25,17 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
     {
         $dummies = [
             [
-                'id' => 1,
+                'id'    => 1,
                 'title' => 'foo 1',
             ],
             [
-                'id' => 2,
+                'id'    => 2,
                 'title' => 'foo 2',
             ],
             [
-                'id' => 3,
+                'id'    => 3,
                 'title' => 'foo 3',
-            ]
+            ],
         ];
         StaticModel::$data = $dummies;
         $this->assertEquals(StaticModel::$data, $dummies);
@@ -45,17 +45,17 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
     {
         $dummies = [
             [
-                'id' => 1,
+                'id'    => 1,
                 'title' => 'foo 1',
             ],
             [
-                'id' => 2,
+                'id'    => 2,
                 'title' => 'foo 2',
             ],
             [
-                'id' => 3,
+                'id'    => 3,
                 'title' => 'foo 3',
-            ]
+            ],
         ];
         StaticModel::$data = $dummies;
         $this->assertNull(StaticModel::find(4));
@@ -70,17 +70,17 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
     {
         $dummies = [
             [
-                'id' => 1,
+                'id'    => 1,
                 'title' => 'foo 1',
             ],
             [
-                'id' => 2,
+                'id'    => 2,
                 'title' => 'foo 2',
             ],
             [
-                'id' => 3,
+                'id'    => 3,
                 'title' => 'foo 3',
-            ]
+            ],
         ];
         StaticModel::$data = $dummies;
         $this->assertNotNull(StaticModel::find(3));
@@ -90,17 +90,17 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
     {
         $dummies = [
             [
-                'id' => 1,
+                'id'    => 1,
                 'title' => 'foo 1',
             ],
             [
-                'id' => 2,
+                'id'    => 2,
                 'title' => 'foo 2',
             ],
             [
-                'id' => 3,
+                'id'    => 3,
                 'title' => 'foo 3',
-            ]
+            ],
         ];
         StaticModel::$data = $dummies;
         $goody = StaticModel::find(3);
@@ -111,17 +111,17 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
     {
         $dummies = [
             [
-                'id' => 1,
+                'id'    => 1,
                 'title' => 'foo 1',
             ],
             [
-                'id' => 2,
+                'id'    => 2,
                 'title' => 'foo 2',
             ],
             [
-                'id' => 3,
+                'id'    => 3,
                 'title' => 'foo 3',
-            ]
+            ],
         ];
         StaticModel::$data = $dummies;
         $goody = StaticModel::find(3);
@@ -132,17 +132,17 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
     {
         $dummies = [
             [
-                'id' => 1,
+                'id'    => 1,
                 'title' => 'foo 1',
             ],
             [
-                'id' => 2,
+                'id'    => 2,
                 'title' => 'foo 2',
             ],
             [
-                'id' => 3,
+                'id'    => 3,
                 'title' => 'foo 3',
-            ]
+            ],
         ];
         StaticModel::$data = $dummies;
         $goody = StaticModel::all();
@@ -160,17 +160,17 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
     {
         $dummies = [
             [
-                'id' => 1,
+                'id'    => 1,
                 'title' => 'foo 1',
             ],
             [
-                'id' => 2,
+                'id'    => 2,
                 'title' => 'foo 2',
             ],
             [
-                'id' => 3,
+                'id'    => 3,
                 'title' => 'foo 3',
-            ]
+            ],
         ];
         StaticModel::$data = $dummies;
         $goody = StaticModel::find(2);
@@ -187,7 +187,7 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
                 ],
                 'en' => [
                   'title' => 'foo 1 en',
-                ]
+                ],
             ],
             [
                 'id' => 2,
@@ -196,7 +196,7 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
                 ],
                 'en' => [
                   'title' => 'foo 2 en',
-                ]
+                ],
             ],
         ];
         StaticModel::$data = $dummies;
@@ -214,7 +214,7 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
                 ],
                 'en' => [
                   'title' => 'foo 1 en',
-                ]
+                ],
             ],
             [
                 'id' => 2,
@@ -223,7 +223,7 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
                 ],
                 'en' => [
                   'title' => 'foo 2 en',
-                ]
+                ],
             ],
         ];
         StaticModel::$data = $dummies;
@@ -242,7 +242,7 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
                 ],
                 'en' => [
                   'title' => 'foo 1 en',
-                ]
+                ],
             ],
             [
                 'id' => 2,
@@ -251,7 +251,7 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
                 ],
                 'en' => [
                   'title' => 'foo 2 en',
-                ]
+                ],
             ],
         ];
         StaticModel::$data = $dummies;
@@ -263,11 +263,11 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
     {
         $dummies = [
             [
-                'id' => 1,
+                'id'   => 1,
                 'city' => 'Montreal',
             ],
             [
-                'id' => 2,
+                'id'   => 2,
                 'city' => 'Quebec',
             ],
         ];
@@ -281,11 +281,11 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
     {
         $dummies = [
             [
-                'id' => 1,
+                'id'   => 1,
                 'city' => 'Montreal',
             ],
             [
-                'id' => 2,
+                'id'   => 2,
                 'city' => 'Quebec',
             ],
         ];
@@ -299,11 +299,11 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
     {
         $dummies = [
             [
-                'id' => 1,
+                'id'   => 1,
                 'city' => 'Montreal',
             ],
             [
-                'id' => 2,
+                'id'   => 2,
                 'city' => 'Quebec',
             ],
         ];
@@ -316,17 +316,17 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
     {
         $dummies = [
             [
-                'id' => 1,
+                'id'    => 1,
                 'title' => 'foo 1',
             ],
             [
-                'id' => 2,
+                'id'    => 2,
                 'title' => 'foo 2',
             ],
             [
-                'id' => 3,
+                'id'    => 3,
                 'title' => 'foo 3',
-            ]
+            ],
         ];
         StaticModel::$data = $dummies;
         $goody = StaticModel::where('title', '=', 'banane');
@@ -337,17 +337,17 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
     {
         $dummies = [
             [
-                'id' => 1,
+                'id'    => 1,
                 'title' => 'foo 1',
             ],
             [
-                'id' => 2,
+                'id'    => 2,
                 'title' => 'foo 2',
             ],
             [
-                'id' => 3,
+                'id'    => 3,
                 'title' => 'foo 3',
-            ]
+            ],
         ];
         StaticModel::$data = $dummies;
         $goody = StaticModel::where('title', '=', 'foo 1')[0];

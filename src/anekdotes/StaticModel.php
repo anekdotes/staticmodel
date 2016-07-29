@@ -4,7 +4,6 @@ namespace Anekdotes\Database;
 
 use ArrayAccess;
 use Str;
-use T;
 
 /**
  * Abstract class used to create static Model classes. These classes have their data initiated in themselves. Allows Model operations to be used to a certain extent.

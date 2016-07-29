@@ -17,22 +17,6 @@ class StaticModel implements ArrayAccess
    * @var mixed[]  model's base data
    */
   public static $data = [];
-  /**
-   * Contains the data of the current object in the model.
-   *
-   * @var mixed[] The object's data
-   */
-  public $instaceData = [];
-
-  /**
-   * Initiates a new object that is part of the model, with the provided data.
-   *
-   * @param mixed[] $instaceData The objects's data
-   */
-  public function __construct($instaceData)
-  {
-      $this->instaceData = $instaceData;
-  }
 
   /**
    * Obtain an instance of the model object at the requested id.

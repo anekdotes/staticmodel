@@ -1,6 +1,6 @@
 <?php
 
-namespace Sitebase\Database;
+namespace Anekdotes\Database;
 
 use ArrayAccess;
 use Str;
@@ -17,6 +17,30 @@ class StaticModel implements ArrayAccess
    * @var mixed[]  model's base data
    */
   public static $data = [];
+
+  /**
+   * Contains the current locale or it'll select french by default.
+   *
+   * @var string The current locale
+   */
+  public $locale = 'fr';
+
+  /**
+   * Contains the data of the current object in the model.
+   *
+   * @var mixed[] The object's data
+   */
+  public $instaceData = [];
+
+  /**
+   * Initiates a new object that is part of the model, with the provided data.
+   *
+   * @param mixed[] $instaceData The objects's data
+   */
+  public function __construct($instaceData)
+  {
+      $this->instaceData = $instaceData;
+  }
 
   /**
    * Obtain an instance of the model object at the requested id.
@@ -104,7 +128,7 @@ class StaticModel implements ArrayAccess
   }
 
   /**
-   * Returns all the items in the model in a random order.
+   * Returns a random item in the model.
    *
    * @return StaticModel[] Array with all the items
    */
@@ -126,9 +150,9 @@ class StaticModel implements ArrayAccess
   {
       if (array_key_exists($key, $this->instaceData)) {
           return $this->instaceData[$key];
-      } elseif (array_key_exists(T::getLocale(), $this->instaceData) &&
-      array_key_exists($key, $this->instaceData[T::getLocale()])) {
-          return $this->instaceData[T::getLocale()][$key];
+      } elseif (array_key_exists($this->locale, $this->instaceData) &&
+      array_key_exists($key, $this->instaceData[$this->locale])) {
+          return $this->instaceData[$this->locale][$key];
       } else {
           return;
       }
@@ -164,9 +188,9 @@ class StaticModel implements ArrayAccess
       $data = [];
       foreach (static::$data as $value) {
           $temp = new static($value);
-          $values[] = $temp[T::getLocale()][$column];
+          $values[] = $temp[$this->locale][$column];
           $ids[] = $temp['id'];
-          $data[$temp['id']] = $temp[T::getLocale()][$column];
+          $data[$temp['id']] = $temp[$this->locale][$column];
       }
       array_multisort($values, SORT_ASC, $ids, SORT_ASC, $data);
       $data_slug = array_map(function ($val) {
@@ -175,18 +199,6 @@ class StaticModel implements ArrayAccess
       array_multisort($data_slug, SORT_ASC, SORT_STRING, $data);
 
       return $data;
-  }
-
-  /**
-   * Returns an array with all the items sorted by title.
-   *
-   * @return StaticModel[]         Array with all the items
-   */
-  public static function ordered()
-  {
-      return array_sort(static::data, function ($value) {
-          return $value['title'];
-      });
   }
 
   /**
@@ -254,7 +266,7 @@ class StaticModel implements ArrayAccess
    */
   public function offsetExists($offset)
   {
-      return isset($this->instaceData[$offset]) || isset($this->instaceData[T::getLocale()][$offset]);
+      return isset($this->instaceData[$offset]) || isset($this->instaceData[$this->locale][$offset]);
   }
 
   /**

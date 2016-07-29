@@ -11,8 +11,7 @@ use T;
  */
 class StaticModel implements ArrayAccess
 {
-
-  /**
+    /**
    * Contains the static base data of the model, as defined in the model's file.
    *
    * @var mixed[]  model's base data
@@ -67,12 +66,11 @@ class StaticModel implements ArrayAccess
           $columns = explode('.', $colomn);
           $temp = null;
           foreach ($columns as $index => $column) {
-              if ($index == 0){
+              if ($index == 0) {
                   if (isset($value[$column])) {
                       $temp = $value[$column];
                   }
-              }
-              else{
+              } else {
                   if (isset($temp[$column])) {
                       $temp = $temp[$column];
                   }

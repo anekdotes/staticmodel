@@ -13,6 +13,7 @@ namespace Tests;
 
 use Anekdotes\Database\StaticModel;
 use PHPUnit_Framework_TestCase;
+use Tests\Testers;
 
 class StaticModelTest extends PHPUnit_Framework_TestCase
 {
@@ -354,39 +355,93 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($goody['id'], 1);
     }
 
-    // public function testStaticModel11()
-    // {
-    //     $dummies = [
-    //         [
-    //             'id' => 1,
-    //             'fr' => [
-    //               'title' => 'foo 1 fr',
-    //             ],
-    //             'en' => [
-    //               'title' => 'foo 1 en',
-    //             ]
-    //         ],
-    //         [
-    //             'id' => 2,
-    //             'fr' => [
-    //               'title' => 'foo 2 fr',
-    //             ],
-    //             'en' => [
-    //               'title' => 'foo 2 en',
-    //             ]
-    //         ],
-    //         [
-    //             'id' => 3,
-    //             'fr' => [
-    //               'title' => 'foo 3 fr',
-    //             ],
-    //             'en' => [
-    //               'title' => 'foo 3 en',
-    //             ]
-    //         ]
-    //     ];
-    //     StaticModel::$data = $dummies;
-    //     $goody = StaticModel::where('title', '=', 'foo 1');
-    //     $this->assertEquals($goody->id, 1);
-    // }
+    public function testStaticModel20()
+    {
+        $dummies = [
+            [
+                'id' => 1,
+                'fr' => [
+                  'title' => 'foo 1 fr',
+                ],
+                'en' => [
+                  'title' => 'foo 1 en',
+                ]
+            ],
+        ];
+        StaticModel::$data = $dummies;
+        $goody = StaticModel::where('fr.title', '=', 'foo 1 fr')[0];
+        $this->assertEquals($goody['id'], 1);
+    }
+
+    public function testStaticModel21()
+    {
+        $element = Testers::find(1);
+        $this->assertNotNull($element);
+    }
+
+    public function testStaticModel22()
+    {
+        $element = Testers::where('id', '=', 1)[0];
+        $this->assertEquals($element->id, 1);
+    }
+
+    public function testStaticModel23()
+    {
+        $elements = Testers::where('category', '=', 'cat 1');
+        $this->assertTrue(count($elements) == 2);
+    }
+
+    public function testStaticModel24()
+    {
+        $elements = Testers::all();
+        $this->assertTrue(count($elements) == 3);
+    }
+
+    public function testStaticModel25()
+    {
+        $element = Testers::where('id', '==', 1)[0];
+        $this->assertEquals($element->id, 1);
+    }
+
+    public function testStaticModel26()
+    {
+        $elements = Testers::where('id', '>', 1);
+        $this->assertEquals(count($elements), 2);
+    }
+
+    public function testStaticModel27()
+    {
+        $elements = Testers::where('id', '<', 3);
+        $this->assertEquals(count($elements), 2);
+    }
+
+    public function testStaticModel28()
+    {
+        $elements = Testers::where('id', '<>', 1);
+        $this->assertEquals(count($elements), 2);
+    }
+
+    public function testStaticModel29()
+    {
+        $elements = Testers::where('id', '!=', 1);
+        $this->assertEquals(count($elements), 2);
+    }
+
+    public function testStaticModel30()
+    {
+        $element = Testers::where('id', '===', 1)[0];
+        $this->assertEquals($element->id, 1);
+    }
+
+    public function testStaticModel31()
+    {
+        $elements = Testers::where('id', '>=', 1);
+        $this->assertEquals(count($elements), 3);
+    }
+
+    public function testStaticModel32()
+    {
+        $elements = Testers::where('id', '<=', 3);
+        $this->assertEquals(count($elements), 3);
+    }
 }

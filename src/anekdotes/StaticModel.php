@@ -61,7 +61,7 @@ class StaticModel implements ArrayAccess
    * @todo Implement the operator
    *
    * @param  string        $colomn   The column that is evaluated in the where
-   * @param  string        $operator Currently unused, should be able to have a different operation based on the operator
+   * @param  string        $operator should be able to have a different operation based on the operator
    * @param  string        $search   The value searched in the column
    *
    * @return StaticModel[]           An array with all the model results
@@ -83,7 +83,33 @@ class StaticModel implements ArrayAccess
                   }
               }
           }
-          if ($temp == $search) {
+
+          //check operator
+          if ($operator == '=' && $temp == $search) {
+              $results[] = new static($value);
+          }
+          elseif ($operator == '==' && $temp == $search) {
+              $results[] = new static($value);
+          }
+          elseif ($operator == '>' && $temp > $search) {
+              $results[] = new static($value);
+          }
+          elseif ($operator == '<' && $temp < $search) {
+              $results[] = new static($value);
+          }
+          elseif ($operator == '<>' && $temp <> $search) {
+              $results[] = new static($value);
+          }
+          elseif ($operator == '!=' && $temp != $search) {
+              $results[] = new static($value);
+          }
+          elseif ($operator == '===' && $temp === $search) {
+              $results[] = new static($value);
+          }
+          elseif ($operator == '>=' && $temp >= $search) {
+              $results[] = new static($value);
+          }
+          elseif ($operator == '<=' && $temp <= $search) {
               $results[] = new static($value);
           }
       }
@@ -127,18 +153,6 @@ class StaticModel implements ArrayAccess
   }
 
   /**
-   * Returns a random item in the model.
-   *
-   * @return StaticModel[] Array with all the items
-   */
-  public static function random()
-  {
-      $results = static::all();
-
-      return array_rand($results);
-  }
-
-  /**
    * Get an attribute of an item in the model instance.
    *
    * @param  string $key The name of the requested attribute
@@ -170,34 +184,6 @@ class StaticModel implements ArrayAccess
       } else {
           $this->instaceData[$key] = $value;
       }
-  }
-
-  /**
-   * Returns an array with all the items in the model, sorted by the requested column.
-   *
-   * @param string         $column The column on which to apply the sort
-   * @param string         $sort   The order in which it is sorted (ASC -> Ascending, DESC-> Descending)
-   *
-   * @return StaticModel[]         Array with all the items
-   */
-  public static function orderBy($column, $sort = 'ASC')
-  {
-      $values = [];
-      $ids = [];
-      $data = [];
-      foreach (static::$data as $value) {
-          $temp = new static($value);
-          $values[] = $temp[$this->locale][$column];
-          $ids[] = $temp['id'];
-          $data[$temp['id']] = $temp[$this->locale][$column];
-      }
-      array_multisort($values, SORT_ASC, $ids, SORT_ASC, $data);
-      $data_slug = array_map(function ($val) {
-          return Str::slug($val);
-      }, $data);
-      array_multisort($data_slug, SORT_ASC, SORT_STRING, $data);
-
-      return $data;
   }
 
   /**

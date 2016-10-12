@@ -3,7 +3,6 @@
 namespace Anekdotes\Database;
 
 use ArrayAccess;
-use Str;
 
 /**
  * Abstract class used to create static Model classes. These classes have their data initiated in themselves. Allows Model operations to be used to a certain extent.
@@ -87,29 +86,21 @@ class StaticModel implements ArrayAccess
           //check operator
           if ($operator == '=' && $temp == $search) {
               $results[] = new static($value);
-          }
-          elseif ($operator == '==' && $temp == $search) {
+          } elseif ($operator == '==' && $temp == $search) {
               $results[] = new static($value);
-          }
-          elseif ($operator == '>' && $temp > $search) {
+          } elseif ($operator == '>' && $temp > $search) {
               $results[] = new static($value);
-          }
-          elseif ($operator == '<' && $temp < $search) {
+          } elseif ($operator == '<' && $temp < $search) {
               $results[] = new static($value);
-          }
-          elseif ($operator == '<>' && $temp <> $search) {
+          } elseif ($operator == '<>' && $temp != $search) {
               $results[] = new static($value);
-          }
-          elseif ($operator == '!=' && $temp != $search) {
+          } elseif ($operator == '!=' && $temp != $search) {
               $results[] = new static($value);
-          }
-          elseif ($operator == '===' && $temp === $search) {
+          } elseif ($operator == '===' && $temp === $search) {
               $results[] = new static($value);
-          }
-          elseif ($operator == '>=' && $temp >= $search) {
+          } elseif ($operator == '>=' && $temp >= $search) {
               $results[] = new static($value);
-          }
-          elseif ($operator == '<=' && $temp <= $search) {
+          } elseif ($operator == '<=' && $temp <= $search) {
               $results[] = new static($value);
           }
       }

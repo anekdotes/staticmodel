@@ -454,6 +454,6 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
     {
         $element = Testers::find(1);
         $element->category = 'cat 3';
-        $this->assertEquals($element->category,'cat 3');
+        $this->assertEquals($element->category, 'cat 3');
     }
 }

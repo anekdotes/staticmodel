@@ -28,16 +28,16 @@ class StaticModel implements ArrayAccess
    *
    * @var mixed[] The object's data
    */
-  public $instaceData = [];
+  public $instanceData = [];
 
   /**
    * Initiates a new object that is part of the model, with the provided data.
    *
-   * @param mixed[] $instaceData The objects's data
+   * @param mixed[] $instanceData The objects's data
    */
-  public function __construct($instaceData)
+  public function __construct($instanceData)
   {
-      $this->instaceData = $instaceData;
+      $this->instanceData = $instanceData;
   }
 
   /**
@@ -152,11 +152,11 @@ class StaticModel implements ArrayAccess
    */
   public function getAttribute($key)
   {
-      if (array_key_exists($key, $this->instaceData)) {
-          return $this->instaceData[$key];
-      } elseif (array_key_exists($this->locale, $this->instaceData) &&
-      array_key_exists($key, $this->instaceData[$this->locale])) {
-          return $this->instaceData[$this->locale][$key];
+      if (array_key_exists($key, $this->instanceData)) {
+          return $this->instanceData[$key];
+      } elseif (array_key_exists($this->locale, $this->instanceData) &&
+      array_key_exists($key, $this->instanceData[$this->locale])) {
+          return $this->instanceData[$this->locale][$key];
       } else {
           return;
       }
@@ -171,9 +171,9 @@ class StaticModel implements ArrayAccess
   public function setAttribute($key, $value)
   {
       if (is_null($key)) {
-          $this->instaceData[] = $value;
+          $this->instanceData[] = $value;
       } else {
-          $this->instaceData[$key] = $value;
+          $this->instanceData[$key] = $value;
       }
   }
 
@@ -184,7 +184,7 @@ class StaticModel implements ArrayAccess
    */
   public function toJson()
   {
-      return json_encode($this->instaceData);
+      return json_encode($this->instanceData);
   }
 
   /**
@@ -242,7 +242,7 @@ class StaticModel implements ArrayAccess
    */
   public function offsetExists($offset)
   {
-      return isset($this->instaceData[$offset]) || isset($this->instaceData[$this->locale][$offset]);
+      return isset($this->instanceData[$offset]) || isset($this->instanceData[$this->locale][$offset]);
   }
 
   /**
@@ -252,7 +252,7 @@ class StaticModel implements ArrayAccess
    */
   public function offsetUnset($offset)
   {
-      unset($this->instaceData[$offset]);
+      unset($this->instanceData[$offset]);
   }
 
   /**

@@ -15,3 +15,29 @@ Abstract class used to create static Model classes. These classes have their dat
 Install via composer into your project:
 
     composer require anekdotes/staticmodel
+
+## Usage
+
+Create your static class by inheriting StaticModel. Fill it with your static data.
+
+```php
+class Languages extends StaticModel {
+
+  public static $data = array(
+    array(                 
+      'id' => 1,           
+      'name' => 'English',
+      'small' => 'en' 
+    )
+  );
+      
+}       
+```
+
+
+You can then call the model as any other Illuminate model, and use most of Illuminate's functionalities.
+
+```php
+$english = Languages::find(1);
+$englishname = $english->name;
+```

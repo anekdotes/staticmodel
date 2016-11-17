@@ -449,4 +449,11 @@ class StaticModelTest extends PHPUnit_Framework_TestCase
         $elements = Testers::whereIn('id', [1, 3]);
         $this->assertEquals(count($elements), 2);
     }
+
+    public function testStaticModel34()
+    {
+        $element = Testers::find(1);
+        $element->category = 'cat 3';
+        $this->assertEquals($element->category,'cat 3');
+    }
 }

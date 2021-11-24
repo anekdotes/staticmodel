@@ -12,9 +12,9 @@
 namespace Tests;
 
 use Anekdotes\Database\StaticModel;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class StaticModelTest extends PHPUnit_Framework_TestCase
+final class StaticModelTest extends TestCase
 {
     public function testStaticModel1()
     {
